@@ -8,7 +8,7 @@ const tableName = 'Expenses';
 
 // configure middleware
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 app.use(express.urlencoded({extended:true}));
 
 //connect to db
@@ -63,22 +63,20 @@ const createTable = ()=>{
 };
 
 // create an endpoint
-app.post('/api/addExpense', (req, res)=> {
-    try{
+app.post('/api/addExpense', (req, res) => {
+    try {
         const { expenseName, category, amount, date } = req.body;
-    if(!expenseName || !category || !amount || !date){
-        console.log("All fields are required");
-        res.status(400).json({ message: 'All fields are required' });
-    }
-    const addExpense = `INSERT INTO ${ tableName } (expenseName, category, amount, date) VALUES(?, ?, ?, ?)`;
-    const values = [expenseName, category, amount, date ];
-    db.query(addExpense,values, (err, result) => {
-        if(err) return res.status(500).json({ message: 'Something went wrong', error: err.message });
-        return res.status(200).json({message: 'Expense added successfully'});
-    });
-    }catch(err){
+        if (!expenseName || !category || !amount || !date) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+        const addExpense = `INSERT INTO ${tableName} (expenseName, category, amount, date) VALUES(?, ?, ?, ?)`;
+        const values = [expenseName, category, amount, date];
+        db.query(addExpense, values, (err, result) => {
+            if (err) return res.status(500).json({ message: 'Something went wrong', error: err.message });
+            return res.status(200).json({ message: 'Expense added successfully', result: result });
+        });
+    } catch (err) {
         return res.status(500).json({ message: 'Something went wrong', error: err.message });
     }
-
-
 });
+
