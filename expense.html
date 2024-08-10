@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <div class="expense-form" id="expense-form">
+        <form id="cynthia" method="POST" action="submit">
+            <label for="expense-name">Expense Name</label><br>
+            <input type="text" name="expense-name" id="expense-name" placeholder="Input expense name"><br><br>
+            <label for="expense-category">Expense Category</label><br>
+            <input type="text" name="expense-category" id="expense-category" placeholder="Input expense category"><br><br>
+            <label for="expense-amount">Expense Amount</label><br>
+            <input type="number" name="expense-amount" id="expense-amount" placeholder="Input expense amount"><br><br>
+            <label for="expense-date">Expense Date</label><br>
+            <input type="date" name="expense-date" id="expense-date" placeholder="Input expense date"><br>
+            <button id="submit" type="submit">Submit</button><br>
+            <p id="auth-msg"></p>
+        </form>
+    </div>
+    <script src="expense.js"></script>
+</body>
+</html>
