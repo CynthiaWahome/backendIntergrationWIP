@@ -25,7 +25,7 @@ db.connect((err) => {
 });
 
 app.listen(4000,()=>{
-    console.log("Server is running on port 3000")
+    console.log("Server is running on port 4000")
 });
 
 // create database
@@ -79,4 +79,5 @@ app.post('/api/addExpense', (req, res) => {
         return res.status(500).json({ message: 'Something went wrong', error: err.message });
     }
 });
+
 
